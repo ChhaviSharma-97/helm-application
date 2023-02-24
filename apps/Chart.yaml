@@ -25,6 +25,6 @@ appVersion: "1.16.0"
 
 dependencies:
   - name: namespace
-  - name: userservice
-  - name: nginx
+  # - name: userservice
+  # - name: nginx
 
