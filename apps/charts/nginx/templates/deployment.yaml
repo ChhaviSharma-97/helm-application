@@ -27,8 +27,6 @@ spec:
         run: {{ .Values.appName }}
         app: {{ .Values.appName }}
         imageTag: "v1.0.1"
-      annotations:
-        iam.amazonaws.com/role: {{ .Values.global.appRole }}
     spec:
       serviceAccountName: "{{ .Values.appName }}-service-role"
       terminationGracePeriodSeconds: 60
