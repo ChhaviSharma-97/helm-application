@@ -44,8 +44,6 @@ spec:
           env:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-            {{- include "java-app.defaultEnvVars" $ | nindent 12 }}
-            {{- include "swagger-host.dnsValue" $ | nindent 12 }}
     {{ if hasKey .Values "tolerations" }}
     {{- with .Values.tolerations }}
       tolerations:
