@@ -146,17 +146,22 @@ spec:
           key: DB_PASSWORD_Secret
         - objectName: rds-user
           key: DB_USER_NAME_Secret
+        - objectName: rds-name
+          key: DATABASE_NAME_Secret
   parameters:
     objects: |
         - objectName: "/{{ $.Release.Namespace }}/RDS/ENDPOINT"
           objectType: "ssmparameter"
           objectAlias: rds-endpoint
-        - objectName: "/{{ $.Release.Namespace }}/APP_DB/newappuser/PASSWORD"
+        - objectName: "/{{ $.Release.Namespace }}/RDS/PASSWORD"
           objectType: "ssmparameter"
           objectAlias: rds-password
-        - objectName: "/{{ $.Release.Namespace }}/APP_DB/newappuser/USERNAME
+        - objectName: "/{{ $.Release.Namespace }}/RDS/USER"
           objectType: "ssmparameter"
           objectAlias: rds-user
+        - objectName: "/{{ $.Release.Namespace }}/RDS/NAME"
+          objectType: "ssmparameter"
+          objectAlias: rds-name
 {{- end }}
 
 {{/*
@@ -179,7 +184,7 @@ volumes:
 - name: MODULE
   value: {{ .Values.appName }}
 - name: ENV
-  value: dev
+  value: {{ .Release.Namespace }}
 {{- end }}
 
 {{- define "swagger-host.dnsValue" -}}
@@ -215,6 +220,7 @@ metadata:
   annotations:
     {{- toYaml . | nindent 4 -}}
   {{- end }}
+    alb.ingress.kubernetes.io/certificate-arn: "{{ $.Values.global.acmArn }}"
     {{- if .ssl_redirect }}
     alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
     {{- end }}
