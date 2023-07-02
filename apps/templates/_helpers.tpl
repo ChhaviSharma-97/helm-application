@@ -146,8 +146,6 @@ spec:
           key: DB_PASSWORD_Secret
         - objectName: rds-user
           key: DB_USER_NAME_Secret
-        - objectName: rds-name
-          key: DATABASE_NAME_Secret
   parameters:
     objects: |
         - objectName: "/{{ $.Release.Namespace }}/RDS/ENDPOINT"
@@ -159,9 +157,6 @@ spec:
         - objectName: "/{{ $.Release.Namespace }}/APP_DB/newappuser/USERNAME
           objectType: "ssmparameter"
           objectAlias: rds-user
-        - objectName: "/{{ $.Release.Namespace }}/APP_DB/NAME"
-          objectType: "ssmparameter"
-          objectAlias: rds-name
 {{- end }}
 
 {{/*
