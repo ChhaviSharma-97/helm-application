@@ -37,9 +37,11 @@ spec:
           ports:
             - containerPort: {{ .Values.resources.containerInfo.containerPort }}
           volumeMounts:
-            - mountPath: "/mnt/userservice"
+            - mountPath: {{ .Values.resources.containerInfo.logPath }}
+              name: application-logs
+            - mountPath: "/mnt/userappservice"
               name: creds-volume
-              readOnly: true
+              readOnly: true 
           {{- with .Values.environments }}
           env:
             {{- toYaml . | nindent 12 }}

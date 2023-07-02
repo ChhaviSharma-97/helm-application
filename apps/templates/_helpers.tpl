@@ -164,6 +164,9 @@ Default Template for Secret-Provider-Class-Volume. All Sub-Charts under this Cha
 */}}
 {{- define "apps.spcvolume" }}
 volumes:
+- name: application-logs
+  hostPath:
+    path: /opt/logs/{{ .Values.appName }}
 - name: creds-volume
   csi:
     driver: secrets-store.csi.k8s.io
