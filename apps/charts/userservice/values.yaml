@@ -4,10 +4,7 @@ run: "user-service-app"
 
 environments:
   - name: DB_HOST
-    valueFrom:
-      secretKeyRef:
-         name: vr-creds
-         key: DATABASE_HOST_STRING_Secret
+    value: "tothenew-demo-rds-cluster.cluster-cmgjgnn6ziwy.ap-south-1.rds.amazonaws.com"
   - name: DB_PASS
     valueFrom:
       secretKeyRef:
