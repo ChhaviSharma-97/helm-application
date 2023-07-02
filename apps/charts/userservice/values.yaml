@@ -38,8 +38,8 @@ resources:
     memory: 1000Mi
   containerInfo:
     containerPort: 5000
-    healthUrl: /api/actuator/health
-    logPath: /opt/logs/gateway-service
+    healthUrl: /app1/health
+    logPath: /opt/logs/users-service
     initialDelaySeconds: 100
     timeoutSeconds: 200
 

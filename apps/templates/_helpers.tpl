@@ -153,13 +153,13 @@ spec:
         - objectName: "/{{ $.Release.Namespace }}/RDS/ENDPOINT"
           objectType: "ssmparameter"
           objectAlias: rds-endpoint
-        - objectName: "/{{ $.Release.Namespace }}/RDS/PASSWORD"
+        - objectName: "/{{ $.Release.Namespace }}/APP_DB/newappuser/PASSWORD"
           objectType: "ssmparameter"
           objectAlias: rds-password
-        - objectName: "/{{ $.Release.Namespace }}/RDS/USER"
+        - objectName: "/{{ $.Release.Namespace }}/APP_DB/newappuser/USERNAME
           objectType: "ssmparameter"
           objectAlias: rds-user
-        - objectName: "/{{ $.Release.Namespace }}/RDS/NAME"
+        - objectName: "/{{ $.Release.Namespace }}/APP_DB/NAME"
           objectType: "ssmparameter"
           objectAlias: rds-name
 {{- end }}

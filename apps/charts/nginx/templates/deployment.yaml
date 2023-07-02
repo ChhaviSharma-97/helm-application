@@ -37,7 +37,7 @@ spec:
           ports:
             - containerPort: {{ .Values.resources.containerInfo.containerPort }}
           volumeMounts:
-            - mountPath: "/mnt/core-auth"
+            - mountPath: "/mnt/nginx"
               name: creds-volume
               readOnly: true
           {{- with .Values.environments }}

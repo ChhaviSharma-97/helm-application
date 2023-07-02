@@ -2,28 +2,6 @@ replicaCount: 1
 appName: "nginx-app"
 run: "nginx-app"
 
-environments:
-  - name: DB_HOST
-    valueFrom:
-      secretKeyRef:
-         name: vr-creds
-         key: DATABASE_HOST_STRING_Secret
-  - name: DB_PASS
-    valueFrom:
-      secretKeyRef:
-         name: vr-creds
-         key: DB_PASSWORD_Secret
-  - name: DB_USER
-    valueFrom:
-      secretKeyRef:
-         name: vr-creds
-         key: DB_USER_NAME_Secret
-  - name: DB_NAME
-    valueFrom:
-      secretKeyRef:
-         name: vr-creds
-         key: DATABASE_NAME_Secret
-
 image:
   repository: "deepanmurugan/nginxapp"
   pullPolicy: Always
@@ -40,7 +18,7 @@ resources:
     memory: 1000Mi
   containerInfo:
     containerPort: 80
-    healthUrl: /api/actuator/health
+    healthUrl: /app2/index.html
     logPath: /opt/logs/nginx-app
     initialDelaySeconds: 100
     timeoutSeconds: 200
